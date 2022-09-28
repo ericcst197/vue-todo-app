@@ -1,0 +1,59 @@
+
+#container{
+    width: 85%;
+    max-width: 30rem;
+    min-height: 100vh;
+    margin: 7vh auto 0;
+    
+    @media(min-width: $phone){
+        margin: 10vh auto 0;
+    }
+
+    header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2{
+            flex : 1;
+            letter-spacing: 10px;
+            color: #fff;
+        }
+
+        input{
+            display: none;
+        }
+
+        label{
+            cursor: pointer;
+            transform: translateY(-3px);
+        }
+    }
+
+    main{
+        display: flex;
+        flex-direction: column;
+        padding-top: 1.8rem;
+        position: relative;
+
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+
+        @media (max-width: $phone) {
+            margin-bottom: 1.2rem;
+        }
+    }
+    
+    .shadow-layout{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: 10px;
+        box-shadow: 10px 30px 30px -10px $light-grayish-1, -10px 30px 30px -10px $light-grayish-1;
+        z-index: -100;
+    }
+}
+
+
