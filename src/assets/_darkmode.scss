@@ -1,0 +1,113 @@
+.darkmode{
+    background-color: $dark-blue-1;
+
+    form{
+        input{
+            color: $dark-grayish-blue-1;
+            background-color: $dark-blue-2;
+            
+            &::placeholder{
+                color: $dark-grayish-blue-2;
+            }
+        }
+        
+        button{
+            color: $dark-grayish-blue-2;
+            background-color: $dark-blue-2;
+
+            @media only screen and (min-width: $phone), 
+            only screen and (hover){
+                &:hover{
+                    color: $dark-grayish-blue-hover;
+                }
+            }
+        }
+    }
+
+    ul{
+        li{
+            color: $dark-grayish-blue-1;
+            background-color: $dark-blue-2;
+            border-bottom: 1px solid $dark-grayish-blue-3;
+        }
+
+        li:hover{
+            color: $dark-grayish-blue-hover;
+        }
+
+        nav{
+            background-color: $dark-blue-2;
+        }
+
+        .check{
+            label{
+                border: 1px solid $dark-grayish-blue-2;
+            
+                @media only screen and (min-width: $phone), 
+                only screen and (hover){
+                    &:hover{
+                        background:linear-gradient($dark-blue-2,$dark-blue-2) padding-box,
+                        $color-check border-box;
+                        svg{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .urgent-label{
+            color: $dark-grayish-blue-2;
+            @media only screen and (min-width: $phone), 
+            only screen and (hover){
+                &:hover{
+                    color: $dark-grayish-blue-hover;
+                }
+            }
+        }
+
+        button{
+            background-color: $dark-blue-2;
+
+            &:hover,
+            &:hover svg{
+                color: $dark-grayish-blue-hover; 
+            }
+
+            svg{
+                color: $dark-grayish-blue-2;
+            }
+        }
+    }
+
+    .sort-todo{
+        background-color: $dark-blue-2;
+
+        button{
+            background-color: $dark-blue-2;
+        }
+
+        button:hover{
+            color: $dark-grayish-blue-hover;
+        }
+
+        button:active,
+        button:focus{
+            color: $color-bright-blue;
+        }
+    }
+
+    .shadow-layout,
+    .mobile{
+        box-shadow: none;
+        background-color: $dark-blue-2;
+    }
+
+    .attribution{
+        color: $dark-grayish-blue-3;
+    }
+    .attribution a{
+        color: $dark-grayish-blue-2;
+    }
+
+}

@@ -21,13 +21,37 @@ picture img{
     position: absolute;
     top: 0 ;
     left: 0;
-    z-index: -5;
 
     @media( max-width: $phone){
         object-fit: cover;
         min-height: 13rem;
     }
 }
+
+.attribution{
+    width: 100%;
+    text-align: center;
+    transform: translateY(-2rem);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+
+    span:last-of-type{
+        margin-left: 10px;
+    }
+
+    a{
+        text-decoration: none;
+        color: #000; 
+
+        &:hover{
+            border-bottom: 1px solid hsl(236, 9%, 61%);
+            color: hsl(236, 9%, 61%); 
+        }
+    }
+}
+
 
 .hidden{
     display: none;
