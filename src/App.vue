@@ -49,7 +49,8 @@ export default {
     return{
       toggleUrgent: this.toggleUrgent,
       toggleComplete: this.toggleComplete,
-      deleteTask: this.deleteTask ,
+      deleteTask: this.deleteTask,
+      darkMode: this.inDarkmode,
     }
   },
   methods:{
@@ -57,6 +58,10 @@ export default {
       this.inDarkmode = boolean
     },
     addNewTask(task){
+      if(task.trim() === '') {
+        alert('Plese type some character');
+        return
+      }
       const newTask = {
         id : new Date().getTime() + '',
         title: task,

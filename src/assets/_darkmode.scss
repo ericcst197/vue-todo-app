@@ -41,9 +41,19 @@
             }
 
             .check {
+                #toggle-complete{
+                    &:checked + .checkmark{
+                        background:$color-check padding-box,
+                        $color-check border-box;
+                        svg{
+                            display: block;
+                        }
+                    }
+                }
+
                 .checkmark{
                     background:linear-gradient($dark-blue-2,$dark-blue-2) padding-box,
-                            $dark-grayish-blue-3 border-box;
+                    $dark-grayish-blue-3 border-box;
 
                     @media only screen and (min-width: $phone), 
                     only screen and (hover){
@@ -58,11 +68,15 @@
                 }
             }
 
+            #urgent:checked + .urgent-label{
+                color: red;
+            }
+
             .urgent-label{
                 color: $dark-grayish-blue-2;
                 @media only screen and (min-width: $phone), 
                 only screen and (hover){
-                    &:hover{
+                    &:hover {
                         color: $dark-grayish-blue-hover;
                     }
                 }
@@ -85,9 +99,18 @@
         nav{
            background-color: $dark-blue-2;
            
-           button{
-               background-color: $dark-blue-2;
-           }
+            button{
+                background-color: $dark-blue-2;
+            }
+
+            button:hover{
+                color: $dark-grayish-blue-hover;
+            }
+            
+            button:active,
+            button:focus{
+                color: $color-bright-blue;
+            }
         }
     }
 
@@ -101,7 +124,7 @@
         button:hover{
             color: $dark-grayish-blue-hover;
         }
-
+    
         button:active,
         button:focus{
             color: $color-bright-blue;
@@ -121,4 +144,8 @@
         color: $dark-grayish-blue-2;
     }
 
+    .completed{
+        text-decoration: line-through;
+        color: $dark-grayish-blue-3
+    }
 }

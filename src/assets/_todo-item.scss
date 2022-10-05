@@ -24,7 +24,6 @@
             margin-right: .6rem;
             position: relative;
     
-
             &:checked + .checkmark{
                 background:$color-check padding-box,
                 $color-check border-box;
@@ -42,7 +41,8 @@
             height:18px;
             border-radius: 50%;
             translate: 0 -1px;
-
+            cursor: pointer;
+            
             background:linear-gradient(#fff, #fff) padding-box,
                        $light-grayish-3 border-box;
             border: 1px solid transparent;
@@ -65,7 +65,7 @@
         }
     }
 
-    p{
+    .title{
         flex: 1;
         line-height: 1.5;
         translate: 0 2px;

@@ -8,7 +8,7 @@
                 </span>
             </label>
         </div>
-        <p class="title">{{ title }}</p>
+        <p class="title" :class="styleParagraph()">{{ title }}</p>
         <label>
             <input @click="toggleUrgent(id)" type="checkbox" id="urgent">
             <span class="urgent-label">
@@ -57,6 +57,12 @@ export default {
     },
     data(){
         return{
+
+        }
+    },
+    methods:{
+        styleParagraph(){
+            return {'completed':this.isCompleted}
         }
     }
 }
