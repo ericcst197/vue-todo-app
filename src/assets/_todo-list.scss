@@ -1,32 +1,11 @@
 ul{
-    margin: 1.2rem 0;
-    border-radius: 10px;
-    overflow: hidden;
+    margin-top: 1.2rem;
+    border-radius:  10px 10px 0 0;
+    overflow: auto;
+    position: relative;
 
-    nav{
-        background-color: #fff;
-        font-size: .7rem;
-        padding: 1rem;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        button{
-            @extend %button;
-            font-size: .7rem;
-        }
-
-        button:hover{
-            color: $light-grayish-4;
-        }
-
-        .item-left{
-            color: $light-grayish-3;
-            cursor: default;
-        }
+    &::-webkit-scrollbar {
+        display: none;
     }
 }
 

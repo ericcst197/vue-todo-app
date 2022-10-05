@@ -1,82 +1,93 @@
-.darkmode{
+.darkmode {
     background-color: $dark-blue-1;
 
-    form{
-        input{
-            color: $dark-grayish-blue-1;
-            background-color: $dark-blue-2;
-            
-            &::placeholder{
-                color: $dark-grayish-blue-2;
-            }
-        }
-        
-        button{
-            color: $dark-grayish-blue-2;
-            background-color: $dark-blue-2;
+    #container main{
+        form{
+            input{
+                color: $dark-grayish-blue-1;
+                background-color: $dark-blue-2;
+                
+                &::placeholder{
+                    color: $dark-grayish-blue-2;
+                }
 
-            @media only screen and (min-width: $phone), 
-            only screen and (hover){
-                &:hover{
-                    color: $dark-grayish-blue-hover;
+                &:-webkit-autofill,
+                &:-webkit-autofill:hover,
+                &:-webkit-autofill:focus,
+                &:-webkit-autofill:active {
+                    -webkit-box-shadow: 0 0 0 1000px $dark-blue-2 inset !important;
+                    -webkit-text-fill-color: $dark-grayish-blue-1 !important;
                 }
             }
-        }
-    }
-
-    ul{
-        li{
-            color: $dark-grayish-blue-1;
-            background-color: $dark-blue-2;
-            border-bottom: 1px solid $dark-grayish-blue-3;
-        }
-
-        li:hover{
-            color: $dark-grayish-blue-hover;
-        }
-
-        nav{
-            background-color: $dark-blue-2;
-        }
-
-        .check{
-            label{
-                border: 1px solid $dark-grayish-blue-2;
             
+            button{
+                color: $dark-grayish-blue-2;
+                background-color: $dark-blue-2;
+
                 @media only screen and (min-width: $phone), 
                 only screen and (hover){
                     &:hover{
-                        background:linear-gradient($dark-blue-2,$dark-blue-2) padding-box,
-                        $color-check border-box;
-                        svg{
-                            display: none;
-                        }
+                        color: $dark-grayish-blue-hover;
                     }
                 }
             }
         }
 
-        .urgent-label{
-            color: $dark-grayish-blue-2;
-            @media only screen and (min-width: $phone), 
-            only screen and (hover){
-                &:hover{
-                    color: $dark-grayish-blue-hover;
+        ul{
+            li{
+                color: $dark-grayish-blue-1;
+                background-color: $dark-blue-2;
+                border-bottom: 1px solid $dark-grayish-blue-3;
+            }
+
+            .check {
+                .checkmark{
+                    background:linear-gradient($dark-blue-2,$dark-blue-2) padding-box,
+                            $dark-grayish-blue-3 border-box;
+
+                    @media only screen and (min-width: $phone), 
+                    only screen and (hover){
+                        &:hover{
+                            background:linear-gradient($dark-blue-2,$dark-blue-2) padding-box,
+                            $color-check border-box;
+                            svg{
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .urgent-label{
+                color: $dark-grayish-blue-2;
+                @media only screen and (min-width: $phone), 
+                only screen and (hover){
+                    &:hover{
+                        color: $dark-grayish-blue-hover;
+                    }
+                }
+            }
+
+            button{
+                background-color: $dark-blue-2;
+
+                &:hover,
+                &:hover svg{
+                    color: $dark-grayish-blue-hover; 
+                }
+
+                svg{
+                    color: $dark-grayish-blue-2;
                 }
             }
         }
 
-        button{
-            background-color: $dark-blue-2;
-
-            &:hover,
-            &:hover svg{
-                color: $dark-grayish-blue-hover; 
-            }
-
-            svg{
-                color: $dark-grayish-blue-2;
-            }
+        nav{
+           background-color: $dark-blue-2;
+           
+           button{
+               background-color: $dark-blue-2;
+           }
         }
     }
 

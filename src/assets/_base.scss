@@ -9,14 +9,18 @@ html{
 
 body{
     box-sizing: border-box;
-    min-height: 100vh;
+    height: 100vh;
     font-family: $font-display;
     background-color: $light-gray;
 }
 
+#app, .wrapper{
+    height: 100%;
+}
+
 picture img{
     width: 100%;
-    height: 15rem;
+    height: 16rem;
     object-fit: fill;
     position: absolute;
     top: 0 ;
@@ -24,15 +28,17 @@ picture img{
 
     @media( max-width: $phone){
         object-fit: cover;
-        min-height: 13rem;
+        max-height: 13rem;
     }
 }
 
 .attribution{
+    position: fixed;
+    bottom: 10px;
+    left: 0;
     width: 100%;
     text-align: center;
-    transform: translateY(-2rem);
-
+   
     display: flex;
     flex-wrap: wrap;
     justify-content: center; 

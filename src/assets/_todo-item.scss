@@ -21,34 +21,40 @@
         #toggle-complete{
             opacity: 0;
             width: 20px;
-            margin-right: 1rem;
+            margin-right: .6rem;
             position: relative;
+    
 
-            &:checked + label{
+            &:checked + .checkmark{
                 background:$color-check padding-box,
                 $color-check border-box;
                 svg{
                     display: block;
                 }
             }
-
-           
         }
 
-        label{
+        .checkmark{
             position: absolute;
-            top:-3px;
-            width: 1.2rem;
-            height: 1.2rem;
-            border: 1px solid $light-grayish-2;
+            top: 0;
+            left: 0;
+            width:18px;
+            height:18px;
             border-radius: 50%;
-            cursor: pointer;
+            translate: 0 -1px;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background:linear-gradient(#fff, #fff) padding-box,
+                       $light-grayish-3 border-box;
+            border: 1px solid transparent;
 
-            @media only screen and (min-width: $phone), 
+            svg{
+                position: absolute;
+                top:25%;
+                left:25%;
+                display: none;
+            }
+
+            @media only screen and (max-width: $phone), 
             only screen and (hover){
                 &:hover{
                     background:linear-gradient(#fff, #fff) padding-box,
@@ -56,45 +62,43 @@
                     border: 1px solid transparent;
                 }
             }
-
-            svg{
-                display: none;
-            }
-        }      
+        }
     }
 
     p{
         flex: 1;
         line-height: 1.5;
         translate: 0 2px;
-    }
 
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
     #urgent{
         display: none;
+        
+        &:checked + .urgent-label{
+            color: red;
+        }
     }
-
+    
     .urgent-label{
         width: 18px;
         height: 18px;
         cursor: pointer;
         color: $light-grayish-3;
-
+        
+        svg{
+           translate: 2px 2px;
+        }
+        
         @media only screen and (min-width: $phone), 
         only screen and (hover){
             &:hover{
                 color: $light-grayish-2;
             }
         }
-        
-        &:active,
-        &:focus{
-            color: red;
-        }
-    }
-
-    #urgent:checked + .urgent-label{
-        color: red;
     }
 
     button{   
