@@ -51,6 +51,7 @@ export default {
       toggleComplete: this.toggleComplete,
       deleteTask: this.deleteTask,
       darkMode: this.inDarkmode,
+      addNewTask: this.addNewTask
     }
   },
   methods:{
@@ -58,28 +59,24 @@ export default {
       this.inDarkmode = boolean
     },
     addNewTask(task){
-      if(task.trim() === '') {
-        alert('Plese type some character');
-        return
-      }
       const newTask = {
         id : new Date().getTime() + '',
         title: task,
         isCompleted : false,
         isUrgent: false,
       }
-      this.tasks.push(newTask)
+      this.tasks.unshift(newTask)
       // console.table(this.tasks)
     },
     toggleComplete(taskID){
       const identifiedTask = this.tasks.find(task => task.id === taskID)
       identifiedTask.isCompleted = !identifiedTask.isCompleted
-      // console.table(this.tasks)
+      console.table(this.tasks)
     },
     toggleUrgent(taskID){
       const identifiedTask = this.tasks.find(task => task.id === taskID)
       identifiedTask.isUrgent = !identifiedTask.isUrgent
-      // console.table(this.tasks)
+      console.table(this.tasks)
     },
     deleteTask(taskID){
       this.tasks = this.tasks.filter(task => task.id != taskID)

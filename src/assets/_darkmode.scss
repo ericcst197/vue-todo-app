@@ -139,13 +139,35 @@
 
     .attribution{
         color: $dark-grayish-blue-3;
-    }
-    .attribution a{
-        color: $dark-grayish-blue-2;
+
+        a{
+            color: $dark-grayish-blue-2;
+        }
     }
 
     .completed{
         text-decoration: line-through;
         color: $dark-grayish-blue-3
+    }
+
+    .invalid-alert{
+        background-color: $dark-blue-1;
+        color: $dark-grayish-blue-2;
+
+        header {
+            background-color:hsl(280, 79%, 24%);
+            width: 100%;
+            padding: 1rem;
+        }
+
+        button{
+            background-color: $dark-blue-1;
+            color: $dark-grayish-blue-2;
+            
+            &:active{
+                background-color: $dark-grayish-blue-4;
+                color: $dark-grayish-blue-hover;
+            }
+        }
     }
 }
