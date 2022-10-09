@@ -1,7 +1,6 @@
 <template>
   <invalid-alert v-if="inputIsInvalid" title="Invalid Input" @close="confirmError">
      <template #default>
-            <p>Invalid input.</p>
             <p>Please enter a title for the task to do.</p>
       </template>
       <template #actions>

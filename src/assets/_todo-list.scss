@@ -9,37 +9,38 @@ ul{
     }
 }
 
-%button{
-    background-color: #fff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-family: inherit;
-    color: $light-grayish-3;
-}
-
 .sort-todo{
+    flex:1;
+    text-align: center;
     display: block;
     background-color: #fff;
     padding: 0 ;
 
-    & button {
-        @extend %button;
+    input{
+        display: none;
+    }
+
+    label {
+        font-size: .8rem;
         font-weight: 700;
-        margin-left: 1rem;
-    }
+        color: $light-grayish-3;
+        margin-left:1.5rem ;
 
-    button:active,
-    button:focus{
-        color: $color-bright-blue;
-    }
 
-    button:hover{
-        color: $light-grayish-4;
+        @media(max-width: $phone){
+            &:first-of-type{
+                margin-left: 0rem;
+            }
+        }
+
+        &:hover{
+            color: $light-grayish-4;
+        }
     }
 
     @media(max-width: $phone){
         display: none;
+        flex:0;
     }
     
 }

@@ -55,11 +55,6 @@ export default {
             required: true,
         }
     },
-    data(){
-        return{
-
-        }
-    },
     methods:{
         styleParagraph(){
             return {'completed':this.isCompleted}

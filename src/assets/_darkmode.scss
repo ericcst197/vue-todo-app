@@ -107,28 +107,27 @@
                 color: $dark-grayish-blue-hover;
             }
             
-            button:active,
-            button:focus{
-                color: $color-bright-blue;
-            }
         }
     }
 
     .sort-todo{
         background-color: $dark-blue-2;
 
-        button{
+        label{
             background-color: $dark-blue-2;
-        }
 
-        button:hover{
-            color: $dark-grayish-blue-hover;
-        }
-    
-        button:active,
-        button:focus{
+            &:hover{
+                color: $dark-grayish-blue-hover;
+            }
+
+            &:active,
+            &:focus{
             color: $color-bright-blue;
         }
+        }
+
+    
+        
     }
 
     .shadow-layout,
@@ -152,7 +151,7 @@
 
     .invalid-alert{
         background-color: $dark-blue-1;
-        color: $dark-grayish-blue-2;
+        color: $dark-grayish-blue-1;
 
         header {
             background-color:hsl(280, 79%, 24%);

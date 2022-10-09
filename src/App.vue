@@ -4,24 +4,16 @@
     <section id="container">
       <Header @toggle-darkmode="toggleDarkmode" />
       <main>
-        <new-todo @submit-task="addNewTask"></new-todo>
-        <todo-list 
-          :tasks="tasks" 
-          :displayCategories="displayCategories">
-        </todo-list>
-        <todo-nav v-if="displayCategories()" :task-left="tasks"></todo-nav>
+        <new-todo></new-todo>
+        <todo-list :tasks="tasks"></todo-list>
+        <todo-nav :display-desktop="displayDesktop" :task-left="tasks"></todo-nav>
         <div class="shadow-layout"></div>
       </main>
-      <div v-if="displayCategories()" class="sort-todo mobile">
-        <button>All</button>
-        <button>Active</button>
-        <button>Completed</button>
-      </div> 
+      <todo-sort v-if="displayMobile()" class="mobile"></todo-sort>
     </section>
     <Attribution />
  </div>
 </template>
-
 <script>
 import TheHeader from "./components/TheHeader.vue";
 import TheBackground from "./components/TheBackground.vue";
@@ -31,7 +23,7 @@ export default {
   components:{
     'Header': TheHeader,
     'Background':  TheBackground,
-    'Attribution': TheAttribution
+    'Attribution': TheAttribution,
   },
   data(){
     return {
@@ -42,8 +34,9 @@ export default {
           title : 'Complete the todo project sdfshfsd gfdsg fds gfdsg dss',
           isCompleted : false,
           isUrgent: false,
-        }
-      ]
+        },
+      ],
+      windowWidth: window.screen.width,
     }
   },provide(){
     return{
@@ -51,7 +44,8 @@ export default {
       toggleComplete: this.toggleComplete,
       deleteTask: this.deleteTask,
       darkMode: this.inDarkmode,
-      addNewTask: this.addNewTask
+      addNewTask: this.addNewTask,
+      selectedBtn: this.selectedBtn,
     }
   },
   methods:{
@@ -80,13 +74,26 @@ export default {
     },
     deleteTask(taskID){
       this.tasks = this.tasks.filter(task => task.id != taskID)
-      // console.table(this.tasks)
+      console.table(this.tasks)
     },
-    displayCategories(){
-        return this.tasks.length > 0
+    displayDesktop(media = this.windowWidth){
+        return this.tasks.length > 0 && media >= 600
+    },
+    displayMobile(media = this.windowWidth){
+        return this.tasks.length > 0 && media < 600
+    },
+    myEventHandler(e) {
+       let width =  e.target.screen.width
+       this.windowWidth = width
     }
-    
-  }
+   
+  },
+  created() {
+    window.addEventListener("resize", this.myEventHandler);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.myEventHandler);
+  },
 }
 </script>
 

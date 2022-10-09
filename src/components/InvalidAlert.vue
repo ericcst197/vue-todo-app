@@ -18,3 +18,17 @@
     </dialog>
 </teleport>
 </template>
+
+
+<script>
+export default {
+    props:{
+        title:{
+            type: String,
+            required: false,
+            default: 'Something went wrong...'
+        }
+    },
+    emits:['close'],
+}
+</script>
