@@ -5,12 +5,12 @@
       <Header @toggle-darkmode="toggleDarkmode" />
       <main>
         <new-todo></new-todo>
-        <todo-list 
-        :tasks="tasks"
-        :selected-sort="selectedSort"
-        >
-        </todo-list>
-        <todo-nav :display-desktop="displayDesktop" :task-left="tasks"></todo-nav>
+        <todo-list :tasks="tasks" :selected-sort="selectedSort"></todo-list>
+        <todo-nav 
+          :display-desktop="displayDesktop"
+          :clear-complete="clearComplete" 
+          :task-left="tasks">
+        </todo-nav>
         <div class="shadow-layout"></div>
       </main>
       <todo-sort v-if="displayMobile()" class="mobile"></todo-sort>
@@ -91,6 +91,9 @@ export default {
     },
     activateSort(e){
       this.selectedSort = e.target.value
+    },
+    clearComplete(){
+        this.tasks = this.tasks.filter(task => !task.isCompleted) 
     },
     displayDesktop(media = this.windowWidth){
         return this.tasks.length > 0 && media >= 600

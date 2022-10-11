@@ -1,5 +1,6 @@
 <template>
      <ul>
+        <li v-if="showElem" class="todo-item">{{ showDescription }}</li>
         <todo-item v-for="task in sortTasks" 
         :key="task.id"
         :id="task.id"
@@ -31,6 +32,20 @@ export default {
                 return this.tasks.filter(task=> task.isCompleted)
             }
         },
+        showDescription(){
+            if(this.selectedSort === 'active'){
+                return 'There is no active tasks.'
+            } else return 'There is no complete tasks.'
+        },
+        showElem(){
+            return this.sortTasks.length === 0 && this.tasks.length !== 0
+        }
     }
 }
 </script>
+
+<style scoped>
+li{
+    justify-content: center;
+}
+</style>
