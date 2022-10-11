@@ -68,10 +68,6 @@
                 }
             }
 
-            #urgent:checked + .urgent-label{
-                color: red;
-            }
-
             .urgent-label{
                 color: $dark-grayish-blue-2;
                 @media only screen and (min-width: $phone), 
@@ -125,9 +121,6 @@
             color: $color-bright-blue;
         }
         }
-
-    
-        
     }
 
     .shadow-layout,

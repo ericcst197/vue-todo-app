@@ -1,11 +1,12 @@
 <template>
      <ul>
-          <todo-item v-for="task in tasks" :key="task.id"
-            :id="task.id"
-            :title="task.title"
-            :is-completed="task.isCompleted"
-            :is-urgent="task.isUrgent">
-          </todo-item>
+        <todo-item v-for="task in sortTasks" 
+        :key="task.id"
+        :id="task.id"
+        :title="task.title"
+        :is-completed="task.isCompleted"
+        :is-urgent="task.isUrgent">
+        </todo-item>
     </ul>
 </template>
 
@@ -15,9 +16,21 @@ export default {
         tasks:{
             type: Array
         }, 
-        displayCategories:{
-            type: Function
-        }
+        selectedSort:{
+            type: String,
+            requierd: true
+        },
+    },
+    computed:{
+        sortTasks(){
+            if(this.selectedSort === 'all'){
+                return this.tasks
+            } else if(this.selectedSort === 'active'){
+                return this.tasks.filter(task=> !task.isCompleted)
+            } else {
+                return this.tasks.filter(task=> task.isCompleted)
+            }
+        },
     }
 }
 </script>

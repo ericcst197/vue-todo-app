@@ -6,10 +6,10 @@
     border-bottom: 1px solid $light-grayish-2;
     background-color:  #fff;
     overflow: hidden;
-   
+    
     display: flex;
     align-items: center;
-
+    
     &:first-of-type{
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
@@ -23,14 +23,6 @@
             width: 20px;
             margin-right: .6rem;
             position: relative;
-    
-            &:checked + .checkmark{
-                background:$color-check padding-box,
-                $color-check border-box;
-                svg{
-                    display: block;
-                }
-            }
         }
 
         .checkmark{
@@ -77,10 +69,6 @@
 
     #urgent{
         display: none;
-        
-        &:checked + .urgent-label{
-            color: red;
-        }
     }
     
     .urgent-label{

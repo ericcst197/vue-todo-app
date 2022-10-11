@@ -3,7 +3,7 @@
         <div class="check">
             <label>
                 <input @click="toggleComplete(id)" type="checkbox" id="toggle-complete" value="false"> 
-                <span class="checkmark">
+                <span class="checkmark" :class="styleCompleteLabel()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg>           
                 </span>
             </label>
@@ -11,7 +11,7 @@
         <p class="title" :class="styleParagraph()">{{ title }}</p>
         <label>
             <input @click="toggleUrgent(id)" type="checkbox" id="urgent">
-            <span class="urgent-label">
+            <span class="urgent-label" :class="styleUrgentLabel()">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                 width="18" height="18" viewBox="0 0 45.311 45.311" style="enable-background:new 0 0 45.311 45.311;"
                 xml:space="preserve">
@@ -58,6 +58,12 @@ export default {
     methods:{
         styleParagraph(){
             return {'completed':this.isCompleted}
+        },
+        styleCompleteLabel(){
+            return {'completed-label':this.isCompleted}
+        },
+        styleUrgentLabel(){
+            return {'is-urgent':this.isUrgent}
         }
     }
 }

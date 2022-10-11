@@ -5,7 +5,11 @@
       <Header @toggle-darkmode="toggleDarkmode" />
       <main>
         <new-todo></new-todo>
-        <todo-list :tasks="tasks"></todo-list>
+        <todo-list 
+        :tasks="tasks"
+        :selected-sort="selectedSort"
+        >
+        </todo-list>
         <todo-nav :display-desktop="displayDesktop" :task-left="tasks"></todo-nav>
         <div class="shadow-layout"></div>
       </main>
@@ -36,6 +40,7 @@ export default {
           isUrgent: false,
         },
       ],
+      selectedSort : 'all',
       windowWidth: window.screen.width,
     }
   },provide(){
@@ -45,7 +50,7 @@ export default {
       deleteTask: this.deleteTask,
       darkMode: this.inDarkmode,
       addNewTask: this.addNewTask,
-      selectedBtn: this.selectedBtn,
+      selectedSort: this.activateSort,
     }
   },
   methods:{
@@ -60,21 +65,32 @@ export default {
         isUrgent: false,
       }
       this.tasks.unshift(newTask)
-      // console.table(this.tasks)
     },
     toggleComplete(taskID){
       const identifiedTask = this.tasks.find(task => task.id === taskID)
       identifiedTask.isCompleted = !identifiedTask.isCompleted
-      console.table(this.tasks)
+      // console.table(this.tasks)
     },
     toggleUrgent(taskID){
       const identifiedTask = this.tasks.find(task => task.id === taskID)
       identifiedTask.isUrgent = !identifiedTask.isUrgent
+      this.sortUrgentTasks()
       console.table(this.tasks)
     },
     deleteTask(taskID){
       this.tasks = this.tasks.filter(task => task.id != taskID)
-      console.table(this.tasks)
+      // console.table(this.tasks)
+    },
+    sortUrgentTasks(){
+      const urgentTasks = this.tasks.filter(task => task.isUrgent )
+
+      if(urgentTasks.length){
+        this.tasks.sort((a, b) => Number(b.id) - Number(a.id))
+                  .sort((a, b) => Number(b.isUrgent) - Number(a.isUrgent))
+      } else this.tasks.sort((a, b) => Number(b.id) - Number(a.id))
+    },
+    activateSort(e){
+      this.selectedSort = e.target.value
     },
     displayDesktop(media = this.windowWidth){
         return this.tasks.length > 0 && media >= 600

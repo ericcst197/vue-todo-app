@@ -1,5 +1,5 @@
 <template>
-    <nav>
+    <nav v-if="displayNav()">
         <p class="item-left">{{ showTaskLeft() }}</p>
         <todo-sort v-if="displayDesktop()"></todo-sort>
         <button class="clear-complete">Clear Completed</button>
@@ -18,10 +18,14 @@ export default {
     },
     methods:{
         showTaskLeft(){
-            return this.taskLeft.length > 1 ? 
-            `${this.taskLeft.length} items left` :  
-            `${this.taskLeft.length} item left`
+            let taskLeft = this.taskLeft.filter(task=> task.isCompleted === false).length
+            return taskLeft > 1 ? 
+            `${taskLeft} items left` :  
+            `${taskLeft} item left`
         },
+        displayNav(){
+            return this.taskLeft.length > 0
+        }
     }
 }
 </script>
