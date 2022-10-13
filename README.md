@@ -47,6 +47,11 @@ Mobile view <br>
 <img src="./public/screenshots/vue-todo-mobile-screenshot-4.png" alt="drawing" height="400"/>
 </p>
 
+Desktop view
+
+
+https://user-images.githubusercontent.com/90197574/195644416-b0683f05-3ec5-493f-87ae-e1996f469a06.mp4
+
 
 ### Links:
 
