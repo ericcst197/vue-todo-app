@@ -1,10 +1,10 @@
 <template>
   <base-alert v-if="inputIsInvalid" title="Invalid Input" @close="confirmError">
-     <template #default>
-            <p>Please enter a title for the task to do.</p>
+      <template #default>
+        <p>Please enter a title for the task to do.</p>
       </template>
       <template #actions>
-          <button @click="confirmError">Okay</button>
+        <button @click="confirmError">Okay</button>
       </template>
   </base-alert>
   <form @submit.prevent="submitTask">
@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  inject:['addNewTask'],
+  props:['addNewTask'],
   data(){
     return {
       enteredTask : '',

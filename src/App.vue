@@ -3,103 +3,39 @@
     <Background :darkmode="inDarkmode" />
     <section id="container">
       <Header @toggle-darkmode="toggleDarkmode" />
-      <main>
-        <new-todo></new-todo>
-        <todo-list :tasks="tasks" :selected-sort="selectedSort"></todo-list>
-        <todo-nav 
-          :display-desktop="displayDesktop"
-          :clear-complete="clearComplete" 
-          :task-left="tasks">
-        </todo-nav>
-        <div class="shadow-layout"></div>
-      </main>
-      <todo-sort v-if="displayMobile()" class="mobile"></todo-sort>
+      <the-app :window-width="windowWidth"></the-app>
     </section>
     <Attribution />
  </div>
 </template>
+
 <script>
-import TheHeader from "./components/TheHeader.vue";
-import TheBackground from "./components/TheBackground.vue";
-import TheAttribution from "./components/TheAttribution.vue";
+import TheHeader from "./components/layouts/TheHeader.vue";
+import TheBackground from "./components/layouts/TheBackground.vue";
+import TheAttribution from "./components/layouts/TheAttribution.vue";
+import TheApp from "./components/todo-app/TheApp.vue";
 
 export default {
   components:{
     'Header': TheHeader,
     'Background':  TheBackground,
     'Attribution': TheAttribution,
+    TheApp
   },
   data(){
     return {
       inDarkmode: false,
-      tasks: [
-        {
-          id: '1234',
-          title : 'Complete the todo project sdfshfsd gfdsg fds gfdsg dss',
-          isCompleted : false,
-          isUrgent: false,
-        },
-      ],
-      selectedSort : 'all',
       windowWidth: window.screen.width,
     }
   },provide(){
     return{
-      toggleUrgent: this.toggleUrgent,
-      toggleComplete: this.toggleComplete,
-      deleteTask: this.deleteTask,
       darkMode: this.inDarkmode,
-      addNewTask: this.addNewTask,
-      selectedSort: this.activateSort,
+      windowWidth: this.windowWidth
     }
   },
   methods:{
     toggleDarkmode(boolean){
       this.inDarkmode = boolean
-    },
-    addNewTask(task){
-      const newTask = {
-        id : new Date().getTime() + '',
-        title: task,
-        isCompleted : false,
-        isUrgent: false,
-      }
-      this.tasks.unshift(newTask)
-    },
-    toggleComplete(taskID){
-      const identifiedTask = this.tasks.find(task => task.id === taskID)
-      identifiedTask.isCompleted = !identifiedTask.isCompleted
-      // console.table(this.tasks)
-    },
-    toggleUrgent(taskID){
-      const identifiedTask = this.tasks.find(task => task.id === taskID)
-      identifiedTask.isUrgent = !identifiedTask.isUrgent
-      this.sortUrgentTasks()
-      console.table(this.tasks)
-    },
-    deleteTask(taskID){
-      this.tasks = this.tasks.filter(task => task.id != taskID)
-      // console.table(this.tasks)
-    },
-    sortUrgentTasks(){
-      const urgentTasks = this.tasks.filter(task => task.isUrgent )
-
-      if(urgentTasks.length){
-        this.tasks.sort((a, b) => Number(b.id) - Number(a.id))
-                  .sort((a, b) => Number(b.isUrgent) - Number(a.isUrgent))
-      } else this.tasks.sort((a, b) => Number(b.id) - Number(a.id))
-    },
-    activateSort(e){
-      this.selectedSort = e.target.value
-    },
-    clearComplete(){
-        this.tasks = this.tasks.filter(task => !task.isCompleted) 
-    },
-    displayDesktop(media = this.windowWidth){
-        return this.tasks.length > 0 && media >= 600
-    },
-    displayMobile(media = this.windowWidth){
-        return this.tasks.length > 0 && media < 600
     },
     myEventHandler(e) {
        let width =  e.target.screen.width
@@ -115,7 +51,3 @@ export default {
   },
 }
 </script>
-
-<style>
-
-</style>

@@ -1,12 +1,12 @@
 import { createApp } from "vue";
 
 import App from "./App.vue";
-import NewTodo from "./components/NewTodo.vue";
-import TodoItem from "./components/TodoItem.vue";
-import TodoList from "./components/TodoList.vue";
-import TodoSort from "./components/TodoSort.vue";
-import TodoNav from "./components/TodoNav.vue";
-import BaseAlert from "./components/BaseAlert.vue";
+import NewTodo from "./components/todo-app/NewTodo.vue";
+import TodoItem from "./components/todo-app/TodoItem.vue";
+import TodoList from "./components/todo-app/TodoList.vue";
+import TodoSort from "./components/todo-app/TodoSort.vue";
+import TodoNav from "./components/todo-app/TodoNav.vue";
+import BaseAlert from "./components/UI/BaseAlert.vue";
 
 import "./assets/main.scss";
 
