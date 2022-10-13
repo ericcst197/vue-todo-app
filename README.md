@@ -55,8 +55,8 @@ https://user-images.githubusercontent.com/90197574/195644416-b0683f05-3ec5-493f-
 
 ### Links:
 
-- Solution URL: [Github](https://your-solution-url.com)
-- Live site URL: [Live demo](https://your-live-site-url.com)
+- Solution URL: [Github](https://github.com/ericcst197/vue-todo-app)
+- Live site URL: [Live demo](ericcst197-vue-todo-app.netlify.app)
 - Short video demo: [Youtube](https://youtu.be/mWdNuPJDXwI)
 
 ## My process
