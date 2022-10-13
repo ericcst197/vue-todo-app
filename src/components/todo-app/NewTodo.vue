@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  props:['addNewTask'],
+  props:['addNewTask', 'saveTasks'],
   data(){
     return {
       enteredTask : '',
@@ -31,6 +31,7 @@ export default {
       }
 
       this.addNewTask(this.enteredTask)
+      this.saveTasks()
       this.enteredTask = ''
     },   
     confirmError(){

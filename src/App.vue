@@ -36,12 +36,22 @@ export default {
   methods:{
     toggleDarkmode(boolean){
       this.inDarkmode = boolean
+      // console.log(boolean)
+      this.saveMode()
     },
     myEventHandler(e) {
-       let width =  e.target.screen.width
+       let width =  e.target.innerWidth
        this.windowWidth = width
+    },
+    saveMode(){
+      const parsed = JSON.stringify(this.inDarkmode);
+      localStorage.setItem('darkmode', parsed)
     }
-   
+  },
+  mounted(){
+    if(localStorage.darkmode){
+        this.inDarkmode = JSON.parse(localStorage.getItem('darkmode'))
+    }
   },
   created() {
     window.addEventListener("resize", this.myEventHandler);
@@ -49,5 +59,6 @@ export default {
   destroyed() {
     window.removeEventListener("resize", this.myEventHandler);
   },
+
 }
 </script>

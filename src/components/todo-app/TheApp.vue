@@ -1,6 +1,6 @@
 <template>
      <main>
-        <new-todo :add-new-task="addNewTask"></new-todo>
+        <new-todo :add-new-task="addNewTask" :save-tasks="saveTasks"></new-todo>
         <todo-list :tasks="tasks" :selected-sort="selectedSort"></todo-list>
         <todo-nav 
           :display-desktop="displayDesktop"
@@ -42,14 +42,20 @@ export default {
     toggleComplete(taskID){
       const identifiedTask = this.tasks.find(task => task.id === taskID)
       identifiedTask.isCompleted = !identifiedTask.isCompleted
+      this.saveAndShow()
     },
     toggleUrgent(taskID){
       const identifiedTask = this.tasks.find(task => task.id === taskID)
       identifiedTask.isUrgent = !identifiedTask.isUrgent
       this.sortUrgentTasks()
+      this.saveAndShow()
     },
     deleteTask(taskID){
+      const tasks = JSON.parse(localStorage.getItem('tasks'))
+      const identifiedTaskIndex = tasks.findIndex(task => task.id === taskID)
+      tasks.splice(identifiedTaskIndex, 1)
       this.tasks = this.tasks.filter(task => task.id != taskID)
+      this.saveAndShow()
     },
     sortUrgentTasks(){
       const urgentTasks = this.tasks.filter(task => task.isUrgent )
@@ -63,7 +69,10 @@ export default {
       this.selectedSort = e.target.value
     },
     clearComplete(){
-      this.tasks = this.tasks.filter(task => !task.isCompleted) 
+      const completedTasksID = this.tasks.filter(task => task.isCompleted).map(task => task.id)
+      for(const id of completedTasksID){
+        this.deleteTask(id)
+      }
     },
     displayDesktop(media = this.windowWidth){
       return this.tasks.length > 0 && media >= 600
@@ -71,6 +80,23 @@ export default {
     displayMobile(media = this.windowWidth){
       return this.tasks.length > 0 && media < 600
     },
+    saveTasks() {
+      const parsed = JSON.stringify(this.tasks);
+      localStorage.setItem('tasks', parsed);
+    },
+    showTasks(){
+      const tasks = localStorage.getItem('tasks');
+      this.tasks = JSON.parse(tasks);
+    },
+    saveAndShow(){
+      this.saveTasks()
+      this.showTasks()
+    }
+  },
+  mounted(){
+    if(localStorage.tasks.length > 0){
+      this.showTasks()
+    }
   }
 }
 </script>
