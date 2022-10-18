@@ -52,7 +52,7 @@ export default {
             if(completedTask.length){   
                 this.hasCompletedTask = true
                 this.title = 'Deleting tasks';
-                this.subtitle = 'Are you sure that you want to delete all the completed tasks?'
+                this.subtitle = 'Are you sure you want to delete all the completed tasks?'
                 this.triggeredAlert = true
             } else {
                 this.subtitle = "You haven't done any task yet."

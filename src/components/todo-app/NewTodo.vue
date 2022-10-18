@@ -8,7 +8,7 @@
       </template>
   </base-alert>
   <form @submit.prevent="submitTask">
-    <input type="text" name="input-to-do" id="input-to-do" placeholder="Create a new todo..." v-model.trim="enteredTask">
+    <input type="text" name="input-task" id="input-task" placeholder="Create a new todo..." v-model.trim="enteredTask">
     <button>Add</button>
   </form> 
 </template>

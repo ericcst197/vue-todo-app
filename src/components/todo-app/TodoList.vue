@@ -34,8 +34,8 @@ export default {
         },
         showDescription(){
             if(this.selectedSort === 'active'){
-                return 'There is no active tasks.'
-            } else return 'There is no complete tasks.'
+                return 'You have complete all the tasks.'
+            } else return 'You haven\'t complete any tasks yet.'
         },
         showElem(){
             return this.sortTasks.length === 0 && this.tasks.length !== 0

@@ -8,7 +8,12 @@
                 </span>
             </label>
         </div>
-        <p class="title" :class="styleParagraph()">{{ title }}</p>
+        <p class="title" @click="showTask" :class="styleParagraph()">{{ title }}</p>
+        <base-alert v-if="viewTask" title="Task" @close="confirmAlert">
+            <template #default>
+                <p>{{ title }}</p>
+            </template>
+        </base-alert>  
         <label>
             <input @click="toggleUrgent(id)" type="checkbox" id="urgent">
             <span class="urgent-label" :class="styleUrgentLabel()">
@@ -54,6 +59,10 @@ export default {
             type: String,
             required: true,
         }
+    },data(){
+        return{
+            viewTask : false
+        }
     },
     methods:{
         styleParagraph(){
@@ -64,6 +73,12 @@ export default {
         },
         styleUrgentLabel(){
             return {'is-urgent':this.isUrgent}
+        },
+        showTask(){
+            this.viewTask = true
+        },
+        confirmAlert(){
+            this.viewTask = false
         }
     }
 }
