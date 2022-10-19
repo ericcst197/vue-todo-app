@@ -34,7 +34,7 @@ Extra 🎯💡🧐
 - Light and dark mode will save in localStorage when toggle
 - Mark todos as urgent task
 - Show alert message when adding empty todo and clearing all completed todo
-- Click on the task description to show the full description
+- Click on the task description to show the full description and edit todo
 
 ### Screenshot
 

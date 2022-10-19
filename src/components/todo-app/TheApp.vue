@@ -25,6 +25,7 @@ export default {
     return {
       toggleUrgent: this.toggleUrgent,
       toggleComplete: this.toggleComplete,
+      updateTask: this.updateTask,
       deleteTask: this.deleteTask,
       selectedSort: this.activateSort,
     }
@@ -49,6 +50,11 @@ export default {
       identifiedTask.isUrgent = !identifiedTask.isUrgent
       this.sortUrgentTasks()
       this.saveAndShow()
+    },
+    updateTask(taskID, task){
+       const identifiedTask = this.tasks.find(task => task.id === taskID)
+       identifiedTask.title = task
+       this.saveAndShow()
     },
     deleteTask(taskID){
       const tasks = JSON.parse(localStorage.getItem('tasks'))

@@ -9,9 +9,23 @@
             </label>
         </div>
         <p class="title" @click="showTask" :class="styleParagraph()">{{ title }}</p>
-        <base-alert v-if="viewTask" title="Task" @close="confirmAlert">
+        <base-alert v-if="viewTask && !editing" title="Task" @close="confirmAlert">
             <template #default>
                 <p>{{ title }}</p>
+            </template>
+            <template #actions>
+                <button v-if="!isCompleted" @click="editTask">Edit</button>
+                <button @click="confirmAlert">Close</button>
+            </template>
+        </base-alert>  
+        <base-alert v-if="viewTask && editing" title="Edit Task" @close="confirmAlert">
+            <template #default>
+                <input @keyup.enter="confirmEdit(id)" type="text" name="updateTask" id="updateTask" v-model.trim="inputEdit" autofocus>
+            </template>
+            <template #actions>
+                <p v-if="invalidEdit">Invalid input</p>
+                <button @click="confirmEdit(id)">Confirm Edit</button>
+                <button @click="closeEdit()">Cancel</button>
             </template>
         </base-alert>  
         <label>
@@ -39,7 +53,7 @@
 
 <script>
 export default {
-    inject:['toggleUrgent','toggleComplete','deleteTask'],
+    inject:['toggleUrgent','toggleComplete','updateTask','deleteTask'],
     props:{
         title:{
             type: String,
@@ -61,7 +75,18 @@ export default {
         }
     },data(){
         return{
-            viewTask : false
+            viewTask : false,
+            editing: false,
+            inputEdit: '',
+            invalidEdit: false
+        }
+    },watch:{
+        inputEdit(input){
+            if(input === '') {
+                this.invalidEdit = true
+            } else {
+                this.invalidEdit = false
+            }
         }
     },
     methods:{
@@ -79,7 +104,21 @@ export default {
         },
         confirmAlert(){
             this.viewTask = false
-        }
+        },
+        editTask(){
+            this.editing =true
+        },
+        confirmEdit(id){
+            if(this.inputEdit === '') {
+                this.invalidEdit = true
+                return
+            }
+            this.updateTask(id, this.inputEdit)
+            this.editing = false
+        },
+        closeEdit(){
+             this.editing = false
+        }      
     }
 }
 </script>
